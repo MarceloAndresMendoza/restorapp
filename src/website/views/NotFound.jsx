@@ -1,5 +1,6 @@
 import i18next from "i18next"
 import { NavLink } from "react-router-dom"
+import { getAsset } from "../../assets/assetList"
 
 export const NotFound = () => {
   return (
@@ -17,10 +18,16 @@ export const NotFound = () => {
               {i18next.t('404-text')}
             </p>
 
-            <NavLink to='/'
-              class="rounded-full bg-bright text-primary px-4 py-2 drop-shadow-md hover:drop-shadow-xl">
-              {i18next.t('string-goto-home')}
-            </NavLink>
+            <div className="flex justify-center">
+              <img className=" w-full max-w-md" src={getAsset('logo')} alt="" srcset="" />
+            </div>
+
+            <div className="flex justify-center drop-shadow rounded-full bg-bright text-primary px-4 py-2 -md hover:drop-shadow-md">
+              <NavLink className="w-full" to="/"
+                class="">
+                {i18next.t('string-goto-home')}
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>

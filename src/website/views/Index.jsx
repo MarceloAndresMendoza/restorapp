@@ -1,13 +1,13 @@
-import i18next from 'i18next';
+import i18next from "i18next";
 import { Header } from "../websiteComponents"
+import { getAsset } from "../../assets/assetList";
+import { ProductsShowcase } from "../components/ProductsShowcase";
 
 export const Index = () => {
   return (
     <>
         <Header/>
-        <div className="p-5">
-            <div>Content</div>
-        </div>
+        <ProductsShowcase />
     </>
   )
 }

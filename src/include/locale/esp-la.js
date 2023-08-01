@@ -19,9 +19,17 @@ i18next.init({
 
                 "string-goto-home": "Ir al inicio",
 
+                "food-showcase-breakfast-title": "Desayunos",
+                "food-showcase-breakfast-text": "Exquisitos dumplins, te verde y dulces tradicionales con un retoque moderno.",
+
+                "food-showcase-cake-title": "Tortas",
+                "food-showcase-cake-text": "Las más ricas tortas de temporada.",
+
+                "footer-copyright-text": "Restorapp - Marcelo Mendoza - 2023",
+
                 "404-title": "Error 404",
                 "404-subtitle": "No se ha encontrado la página",
-                "404-text": "El recurso o página que ha solicitado se ha movido, renombrado o no existió.",
+                "404-text": "El recurso o página que ha solicitado se ha movido, renombrado o nos la comimos.",
 
             }
         }

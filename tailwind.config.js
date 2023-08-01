@@ -21,6 +21,7 @@ export default {
             primary: '#2b2520',
             latte: '#f2f2ed',
             bright: 'white',
+            accent: '#ee7410',
           }
         }
       },
