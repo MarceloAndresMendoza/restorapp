@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Index, NotFound } from '../websiteComponents';
+import { Index, Menu, NotFound } from '../websiteComponents';
 import { useState } from 'react';
 
 export const AppRouter = () => {
@@ -11,8 +11,8 @@ export const AppRouter = () => {
             <div className={currentTheme}>
                 <Routes>
                     <Route path='/' element={<Index />} />
-                    {/* <Route path = 'contacto' element = { <Contacto /> } />
-                    <Route path='tienda'>
+                    <Route path = 'menu' element = { <Menu /> } />
+                    {/* <Route path='tienda'>
                         <Route index element = { <Tienda /> } />
                         <Route path = ':productID' element = { <Product /> } />
                     </Route> */}

@@ -6,3 +6,4 @@ export * from './routes/AppRoutes';
 
 export * from './views/Index';
 export * from './views/NotFound';
+export * from './views/Menu';

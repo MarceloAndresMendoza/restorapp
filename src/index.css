@@ -105,3 +105,8 @@
         src: url(./assets/fonts/poppins/Poppins-BlackItalic.ttf);
     }
 }
+
+.active {
+    background-color: #f2f2ed;
+    color: #ee7410;
+}
