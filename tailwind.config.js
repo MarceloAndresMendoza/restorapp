@@ -22,6 +22,7 @@ export default {
             latte: '#f2f2ed',
             bright: 'white',
             accent: '#ee7410',
+            gray: "#9d938c",
           }
         }
       },

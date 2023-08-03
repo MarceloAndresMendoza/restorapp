@@ -19,12 +19,12 @@ export const NotFound = () => {
             </p>
 
             <div className="flex justify-center">
-              <img className=" w-full max-w-md" src={getAsset('logo')} alt="" srcset="" />
+              <img className=" w-full max-w-md" src={getAsset('logo').image} alt={getAsset('logo').alt} />
             </div>
 
             <div className="flex justify-center drop-shadow rounded-full bg-bright text-primary px-4 py-2 -md hover:drop-shadow-md">
               <NavLink className="w-full" to="/"
-                class="">
+                className="">
                 {i18next.t('string-goto-home')}
               </NavLink>
             </div>

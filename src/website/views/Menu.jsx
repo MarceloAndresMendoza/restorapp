@@ -35,7 +35,7 @@ export const Menu = () => {
           {/* <!-- Menú de Dulces --> */}
           <div className="bg-white rounded-lg shadow">
             <div className="mb-4">
-              <img src={getAsset('menuSweetsHeader')} alt="Sweet Menu" className="w-full h-48 object-cover mb-2 rounded-t-lg" />
+              <img src={getAsset('menuSweetsHeader').image} alt={getAsset('menuSweetsHeader').alt} className="w-full h-48 object-cover mb-2 rounded-t-lg" />
               <div className="p-4">
                 <h2 className="text-xl font-bold mb-4">{i18next.t("food-menu-sweets-title")}</h2>
                 {sweetsMenu.map((item, index) => (
@@ -51,7 +51,7 @@ export const Menu = () => {
 
           {/* <!-- Bebidas --> */}
           <div className="bg-white rounded-lg shadow">
-            <img src={getAsset('menuDrinksHeader')} alt="Drink Menu" className="w-full h-48 object-cover mb-2 rounded-t-lg" />
+            <img src={getAsset('menuDrinksHeader').image} alt={getAsset('menuDrinksHeader').alt} className="w-full h-48 object-cover mb-2 rounded-t-lg" />
             <div className="mb-4">
               <div className="p-4">
                 <h2 className="text-xl font-bold mb-4">{i18next.t("food-menu-drinks-title")}</h2>

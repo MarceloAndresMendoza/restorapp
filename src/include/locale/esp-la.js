@@ -5,13 +5,16 @@ import i18next from 'i18next';
 
 i18next.init({
     // Next line: languaje is hardcoded since is only one for now.
-    lng: 'es',
+    lng: 'esLatam',
     debug: true,
     resources: {
-        es: {
+        esLatam: {
             translation: {
                 "brand-main-title": "Matcha",
                 "brand-main-subtitle": "Disfruta la Dulzura de Japón",
+
+                "home-main-title": "¡Delicias Japonesas directo al Paladar!",
+                "home-main-subtitle": "Sumérgete en la cultura culinaria de Japón con nuestra exquisita selección de dulces tradicionales.",
 
                 "navbar-link-index": "Inicio",
                 "navbar-link-menu": "Menú",
@@ -19,24 +22,36 @@ i18next.init({
 
                 "string-goto-home": "Ir al inicio",
 
+                // General image alts
+                "alt-logo": "Logotipo de Matcha",
+                "alt-photoFront": "Vista de frente del local Matcha",
+                "alt-cherryTree": "Vista de frente del local Matcha",
+                "alt-mountain": "Silueta de una montaña",
+
+                // Food Showcase
                 "food-showcase-product-1-title": "Desayunos",
                 "food-showcase-product-1-text": "Exquisitos dumplins y dulces tradicionales con un toque moderno.",
+                "alt-productShowcase1": "Una mesa con dulces y tazas de té",
 
                 "food-showcase-product-2-title": "Tortas",
                 "food-showcase-product-2-text": "Las más ricas tortas de temporada.",
+                "alt-productShowcase2": "Una mesa con un trozo de torta y una taza de té",
 
                 "food-showcase-product-3-title": "Té verde",
                 "food-showcase-product-3-text": "Desde Japón, traemos las mejores variedades.",
+                "alt-productShowcase3": "Un set de te verde",
 
                 "food-showcase-product-4-title": "Ambiente grato",
                 "food-showcase-product-4-text": "Una experiencia culinaria única.",
+                "alt-productShowcase4": "Dos personas compartiendo un desayuno fuera del local",
 
                 "food-menu-title": "Menú",
                 "food-menu-description": "Disfruta de nuestra exquisita selección de dulces tradicionales japoneses, elaborados con los sabores más auténticos y delicados. Sumérgete en la cultura culinaria de Japón mientras saboreas estas delicias únicas.",
 
                 "food-menu-sweets-title": "🍵 Wagashi (和菓子) - Dulces Japoneses 🍵",
+                "alt-menuSweetsHeader": "Dulces japoneses",
 
-                // Definiciones de los productos de dulces
+                // Menu - Sweets
                 "food-menu-sweet-1-title": "Daifuku (大福)",
                 "food-menu-sweet-1-description": "Mochi relleno de anko (pasta de judías rojas dulces).",
                 "food-menu-sweet-1-price": "$3.500",
@@ -53,8 +68,9 @@ i18next.init({
                 "food-menu-sweet-4-description": "Brochetas de mochi bañadas en una deliciosa salsa dulce.",
                 "food-menu-sweet-4-price": "$2.500",
 
-                // Definiciones de las bebidas
+                // Menu - Drinks
                 "food-menu-drinks-title": "🍵 Bebidas Tradicionales 🍵",
+                "alt-menuDrinksHeader": "Una taza de té",
 
                 "food-menu-drink-1-title": "Matcha Latte (抹茶ラテ)",
                 "food-menu-drink-1-description": "Té verde matcha con leche cremosa.",
@@ -72,9 +88,7 @@ i18next.init({
                 "food-menu-drink-4-description": "Té verde con arroz tostado, un sabor único y acogedor.",
                 "food-menu-drink-4-price": "$2.250",
 
-                // Agrega aquí más definiciones para otros productos y bebidas.
-                // ...
-
+                // Footer
                 "footer-copyright-text": "Restorapp - Marcelo Mendoza - 2023",
 
                 "404-title": "Error 404",
