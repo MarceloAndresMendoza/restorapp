@@ -18,7 +18,7 @@ export const NavBar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/reservation" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
+            <NavLink to="/reservations" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
               <i className="fa-solid fa-check-to-slot"></i>
               <div>{i18next.t('navbar-link-reservation')}</div>
             </NavLink>

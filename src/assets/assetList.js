@@ -8,6 +8,8 @@ import productShowcase4 from './photos/people.jpg';
 import menuSweetsHeader from './photos/mochis.jpg';
 import menuDrinksHeader from './photos/tea-cup.jpg';
 import mountain from './branding/mountain.svg';
+import restorapp from './branding/restorapp.jpg';
+
 import i18next from 'i18next';
 
 export const getAsset = (file) => {
@@ -33,6 +35,8 @@ export const getAsset = (file) => {
             return { image: menuDrinksHeader, alt: alt };
         case 'mountain':
             return { image: mountain, alt: alt };
+        case 'restorapp':
+            return { image: restorapp, alt: alt };
         default:
             return null;
     }

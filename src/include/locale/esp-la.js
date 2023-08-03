@@ -25,8 +25,9 @@ i18next.init({
                 // General image alts
                 "alt-logo": "Logotipo de Matcha",
                 "alt-photoFront": "Vista de frente del local Matcha",
-                "alt-cherryTree": "Vista de frente del local Matcha",
+                "alt-cherryTree": "Fondo de árboles de cerezos",
                 "alt-mountain": "Silueta de una montaña",
+                "alt-restorapp": "Logo de la aplicación Restorapp",
 
                 // Food Showcase
                 "food-showcase-product-1-title": "Desayunos",
@@ -89,7 +90,9 @@ i18next.init({
                 "food-menu-drink-4-price": "$2.250",
 
                 // Footer
-                "footer-copyright-text": "Restorapp - Marcelo Mendoza - 2023",
+                "footer-copyright-appname": "Restorapp",
+                "footer-copyright-author": "Marcelo Mendoza",
+                "footer-copyright-year": "2023",
 
                 "404-title": "Error 404",
                 "404-subtitle": "No se ha encontrado la página",

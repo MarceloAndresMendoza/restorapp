@@ -23,8 +23,7 @@ export const NotFound = () => {
             </div>
 
             <div className="flex justify-center drop-shadow rounded-full bg-bright text-primary px-4 py-2 -md hover:drop-shadow-md">
-              <NavLink className="w-full" to="/"
-                className="">
+              <NavLink className="w-full" to="/">
                 {i18next.t('string-goto-home')}
               </NavLink>
             </div>

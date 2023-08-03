@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Index, Menu, NotFound } from '../websiteComponents';
+import { Index, Menu, NotFound, Reservations, Myreservation } from '../websiteComponents';
 import { useState } from 'react';
 
 export const AppRouter = () => {
@@ -12,10 +12,10 @@ export const AppRouter = () => {
                 <Routes>
                     <Route path='/' element={<Index />} />
                     <Route path = 'menu' element = { <Menu /> } />
-                    {/* <Route path='tienda'>
-                        <Route index element = { <Tienda /> } />
-                        <Route path = ':productID' element = { <Product /> } />
-                    </Route> */}
+                    <Route path='reservations'>
+                        <Route index element = { <Reservations /> } />
+                        <Route path = ':reservationID' element = { <Myreservation /> } />
+                    </Route>
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </div>
