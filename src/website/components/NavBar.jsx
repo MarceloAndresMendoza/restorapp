@@ -23,6 +23,12 @@ export const NavBar = () => {
               <div>{i18next.t('navbar-link-reservation')}</div>
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/admin" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
+              <i className="fa-solid fa-lock"></i>
+              <div>{i18next.t('navbar-link-admin')}</div>
+            </NavLink>
+          </li>
         </ul>
     </>
   )

@@ -19,6 +19,7 @@ i18next.init({
                 "navbar-link-index": "Inicio",
                 "navbar-link-menu": "Menú",
                 "navbar-link-reservation": "Reservas",
+                "navbar-link-admin": "Admin",
 
                 "string-goto-home": "Ir al inicio",
 
@@ -26,7 +27,7 @@ i18next.init({
                 "alt-logo": "Logotipo de Matcha",
                 "alt-photoFront": "Vista de frente del local Matcha",
                 "alt-cherryTree": "Fondo de árboles de cerezos",
-                "alt-mountain": "Silueta de una montaña",
+                "alt-descImg": "Tori Japonés",
                 "alt-restorapp": "Logo de la aplicación Restorapp",
 
                 // Food Showcase
@@ -88,6 +89,18 @@ i18next.init({
                 "food-menu-drink-4-title": "Genmaicha (玄米茶)",
                 "food-menu-drink-4-description": "Té verde con arroz tostado, un sabor único y acogedor.",
                 "food-menu-drink-4-price": "$2.250",
+
+                // Reservations
+                "reservation-title": "Reservar",
+                "reservation-text": "Visítenos en nuestro local y disfrute de una experiencia culinaria única. Reserve su mesa para degustar nuestros deliciosos dulces japoneses y bebidas tradicionales. Nuestro acogedor ambiente y atención personalizada le asegurarán una velada inolvidable. ¡Esperamos su visita!",
+
+                // My Reservation
+                "my-reservation-title": "Mi reserva",
+                "my-reservation-text": "Ingrese su RUT para encontrar su reserva y verificar los detalles.",
+
+                // Admin
+                "admin-title": "Admin",
+                "admin-text": "Detalles de las reservas realizadas.",
 
                 // Footer
                 "footer-copyright-appname": "Restorapp",

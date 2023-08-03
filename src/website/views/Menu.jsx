@@ -26,9 +26,9 @@ export const Menu = () => {
     <>
       <Header small='true' />
 
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-20">
         <div className="flex flex-col sm:flex-row w-full justify-between items-end sm:items-start sm:gap-10">
-          <h1 className="text-6xl font-semibold mb-4 text-accent">{i18next.t("food-menu-title")}</h1>
+          <h1 className="text-6xl font-semibold mb-4 text-accent whitespace-nowrap">{i18next.t("food-menu-title")}</h1>
           <p className="text-sm text-gray-400 mb-8 max-w-[500px] text-right">{i18next.t("food-menu-description")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

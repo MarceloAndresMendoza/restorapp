@@ -9,3 +9,4 @@ export * from './views/NotFound';
 export * from './views/Menu';
 export * from './views/Reservations';
 export * from './views/Myreservation';
+export * from './views/Admin';
