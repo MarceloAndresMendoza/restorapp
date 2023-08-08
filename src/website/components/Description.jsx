@@ -23,7 +23,7 @@ export const Description = () => {
 
     return (
         <>
-            <div className="p-10 relative">
+            <div className="p-10 relative text-center">
                 <div className="text-center align-middle overflow-hidden inline-block relative animejs-anim">
                     <img className="max-w-[200px] mb-4 m-auto" src={getAsset('descImg').image} alt={getAsset('descImg').alt} />
                     <h1 className="text-4xl font-black text-primary mb-8 inline-block animejs-anim animejs-wrap-letter">{i18next.t('home-main-title')}</h1>

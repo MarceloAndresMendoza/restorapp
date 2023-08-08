@@ -94,6 +94,20 @@ i18next.init({
                 "reservation-title": "Reservar",
                 "reservation-text": "Visítenos en nuestro local y disfrute de una experiencia culinaria única. Reserve su mesa para degustar nuestros deliciosos dulces japoneses y bebidas tradicionales. Nuestro acogedor ambiente y atención personalizada le asegurarán una velada inolvidable. ¡Esperamos su visita!",
 
+                "reservation-date-current": "Reservas disponibles para el día",
+
+                "reservation-sector": "Sector",
+                "reservation-time": "Horario",
+                "reservation-available": "Disponible",
+                "reservation-not-available": "Reservas no disponible para hoy",
+
+                "reservation-sector1": "Interior",
+                "reservation-sector2": "Exterior",
+                "reservation-sector3": "Terraza",
+
+                "reservation-morning": "Mañana",
+                "reservation-afternoon": "Tarde",
+
                 // My Reservation
                 "my-reservation-title": "Mi reserva",
                 "my-reservation-text": "Ingrese su RUT para encontrar su reserva y verificar los detalles.",

@@ -8,20 +8,10 @@ import react from '@vitejs/plugin-react'
 //   base: base,
 // })
 
-export default defineConfig(
-  {
-    plugins: [react()],
+export default defineConfig({
+  plugins: [react()],
+  base: '/restorapp/',
+  build: {
+    outDir: './docs',
   },
-  ({ command, mode, ssrBuild }) => {
-  if (command === 'serve') {
-    // Dev Mode
-    return {
-      base: '',
-    }
-  } else {
-    // command === 'build', Build Mode
-    return {
-      base: '/restorapp/',
-    }
-  }
 })
