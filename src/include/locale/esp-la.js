@@ -10,6 +10,18 @@ i18next.init({
     resources: {
         esLatam: {
             translation: {
+                "close": "Cerrar",
+                "of": "de",
+                "weekdayNames": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                "sunday": "Domingo",
+                "monday": "Lunes",
+                "tuesday": "Martes",
+                "wednesday": "Miércoles",
+                "thursday": "Jueves",
+                "friday": "Viernes",
+                "saturday": "Sábado",
+                "monthNames": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+
                 "brand-main-title": "Matcha",
                 "brand-main-subtitle": "Disfruta la Dulzura de Japón",
 
@@ -107,6 +119,29 @@ i18next.init({
 
                 "reservation-morning": "Mañana",
                 "reservation-afternoon": "Tarde",
+
+                "reservation-book-now": "Reservar aquí",
+                "reservation-book-not-available": "No disponible",
+
+                "reservation-modal-title": "Reservar",
+                "reservation-booking-for-the-day": "Reservando para el día",
+                "reservation-booking-location": "Ubicación:",
+                "reservation-booking-time": "en la",
+                "reservation-full-name": "Nombre completo",
+                "reservation-enter-full-name": "Juanito los Palotes",
+                "reservation-email": "Correo electrónico",
+                "reservation-enter-email": "correo@micorreo.com",
+                "reservation-phone": "Teléfono de contacto",
+                "reservation-enter-phone": "+56 9 1234 5678",
+                "reservation-guests": "Número de invitados",
+                "reservation-enter-guests": "1 a 8",
+
+                "reservation-full-name-required": "Nombre completo requerido",
+                "reservation-email-required": "Email requerido",
+                "reservation-phone-required": "Teléfono requerido",
+
+                "reservation-close": "Cancelar",
+                "reservation-submit": "Reservar",
 
                 // My Reservation
                 "my-reservation-title": "Mi reserva",
