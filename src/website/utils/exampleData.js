@@ -1,7 +1,7 @@
 export const getExampledata = () => {
     const data = [
         {
-            date: "8/8/2023",
+            id: "8-8-2023",
             sector1: {
                 morning:
                     [
@@ -97,7 +97,7 @@ export const getExampledata = () => {
             },
         },
         {
-            date: "9/8/2023",
+            id: "9-8-2023",
             sector1: {
                 morning: [
                         {
@@ -135,6 +135,21 @@ export const getExampledata = () => {
                             email: "gabrielareyes@mail.com",
                             phone: "+56944443333",
                             guests: 1
+                        },{
+                            fullname: "Laura Gómez Martínez",
+                            email: "lauragomez@mail.com",
+                            phone: "+56911115555",
+                            guests: 3
+                        },{
+                            fullname: "Ramiro Méndez Ramírez",
+                            email: "laurimendd@mail.com",
+                            phone: "+569113773655",
+                            guests: 2
+                        },{
+                            fullname: "Romina Pereira Oyarce",
+                            email: "romipez@mail.com",
+                            phone: "+56944115885",
+                            guests: 3
                         }
                 ],
                 afternoon: [
@@ -143,12 +158,6 @@ export const getExampledata = () => {
                             email: "danielherrera@mail.com",
                             phone: "+56988887777",
                             guests: 2
-                        },
-                        {
-                            fullname: "Laura Gómez Martínez",
-                            email: "lauragomez@mail.com",
-                            phone: "+56911115555",
-                            guests: 3
                         },
                         {
                             fullname: "Eduardo Fernández Silva",

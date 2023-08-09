@@ -1,6 +1,7 @@
 import i18next from "i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getExampledata } from "../utils/exampleData";
+import { getDataAPI } from "../utils/API";
 
 export const ReservationList = () => {
 
@@ -18,9 +19,13 @@ export const ReservationList = () => {
     };
 
     const getCurrentDateString = () => {
-        const stringifiedDate = currentDate.getDate() + "/" + (currentDate.getMonth() + 1) + "/" + currentDate.getFullYear();
+        const stringifiedDate = currentDate.getDate() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getFullYear();
         return stringifiedDate;
     }
+
+    useEffect(() => {
+        console.log(getDataAPI('8-8-2023'))
+    }, [])
 
     const [reservationData, setReservationData] = useState(getExampledata());
     let noMatching = true
@@ -56,12 +61,12 @@ export const ReservationList = () => {
                 </thead>
                 <tbody className="bg-orange-100">
                     {reservationData.map(item => {
-                        if (item.date === getCurrentDateString()) {
+                        if (item.id === getCurrentDateString()) {
                             noMatching = false;
                             return (
                                 <>
                                     {Object.keys(item).map(key => {
-                                        if (key !== 'date') {
+                                        if (key !== 'id') {
                                             return (
                                                 <>
                                                     <tr className="border-t-2 border-orange-200" key={key}>
@@ -73,7 +78,8 @@ export const ReservationList = () => {
                                                         </td>
                                                         <td className="p-4 text-center font-bold">
                                                             {
-                                                                reservationData.find(item => item.date === getCurrentDateString())?.[key]?.morning.length
+                                                                +(eval(`available${key}`)) - reservationData.find(item => item.id === getCurrentDateString())?.[key]?.morning.length
+                                                                // console.log(eval(`available${key}`))
                                                             }
                                                         </td>
                                                     </tr>
@@ -83,7 +89,7 @@ export const ReservationList = () => {
                                                         </td>
                                                         <td className="p-4 text-center font-bold">
                                                             {
-                                                                reservationData.find(item => item.date === getCurrentDateString())?.[key]?.afternoon.length
+                                                                +(eval(`available${key}`)) - reservationData.find(item => item.id === getCurrentDateString())?.[key]?.afternoon.length
                                                             }
                                                         </td>
                                                     </tr>
@@ -98,70 +104,11 @@ export const ReservationList = () => {
                         }
                         return null;
                     })}
-                    {/* <tr className="border-t-2 border-orange-200">
-                        <td className="px-4 font-bold" rowSpan={2}>
-                            <i className="fas fa-home text-blue-500"></i> {i18next.t('reservation-sector-1')}
-                        </td>
-                        <td className="p-4">
-                            <i className="fas fa-sun text-yellow-400"></i> {i18next.t('reservation-morning')}
-                        </td>
-                        <td className="p-4 text-center font-bold">
-                            {
-                                reservationData.find(item => item.date === getCurrentDateString())?.sector1?.morning
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="p-4">
-                            <i className="fas fa-cloud-sun text-yellow-800"></i> {i18next.t('reservation-afternoon')}
-                        </td>
-                        <td className="p-4 text-center font-bold">
-                            {
-                                reservationData.find(item => item.date === getCurrentDateString())?.sector1?.morning
-                            }
-                        </td>
-                    </tr> */}
-
-
-
-                    {/*
-
-
-                    <tr className="border-t-2 border-orange-200">
-                        <td className="px-4 font-bold" rowSpan={2}>
-                            <i className="fas fa-tree text-green-500"></i> {i18next.t('reservation-sector-2')}
-                        </td>
-                        <td className="p-4">
-                            <i className="fas fa-sun text-yellow-400"></i> {i18next.t('reservation-morning')}
-                        </td>
-                        <td className="p-4 text-center font-bold">4</td>
-                    </tr>
-                    <tr>
-                        <td className="p-4">
-                            <i className="fas fa-cloud-sun text-yellow-800"></i> {i18next.t('reservation-afternoon')}
-                        </td>
-                        <td className="p-4 text-center font-bold">1</td>
-                    </tr>
-                    <tr className="border-t-2 border-orange-200">
-                        <td className="px-4 font-bold" rowSpan={2}>
-                            <i className="fas fa-chair text-red-500"></i> {i18next.t('reservation-sector-3')}
-                        </td>
-                        <td className="p-4">
-                            <i className="fas fa-sun text-yellow-400"></i> {i18next.t('reservation-morning')}
-                        </td>
-                        <td className="p-4 text-center font-bold">2</td>
-                    </tr>
-                    <tr>
-                        <td className="p-4">
-                            <i className="fas fa-cloud-sun text-yellow-800"></i> {i18next.t('reservation-afternoon')}
-                        </td>
-                        <td className="p-4 text-center font-bold">3</td>
-                    </tr> */}
                     {
                         noMatching && (
                             <>
                                 <tr className="border-t-2 border-orange-200" >
-                                    <td className="px-4 font-bold text-center text-xl p-8 text-orange-500" colSpan={3}>
+                                    <td className="px-4 font-bold text-center text-xl p-8 text-orange-500 h-[363px]" colSpan={3}>
                                         {i18next.t(`reservation-not-available`)}
                                     </td>
                                 </tr>

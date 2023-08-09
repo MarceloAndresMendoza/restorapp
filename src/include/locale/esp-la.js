@@ -99,7 +99,7 @@ i18next.init({
                 "reservation-sector": "Sector",
                 "reservation-time": "Horario",
                 "reservation-available": "Disponible",
-                "reservation-not-available": "Reservas no disponible para hoy",
+                "reservation-not-available": "Reservas no disponibles para hoy",
 
                 "reservation-sector1": "Interior",
                 "reservation-sector2": "Exterior",
