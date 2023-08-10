@@ -3,8 +3,9 @@ import { getCurrentDateString, getDayOfWeekString, getMonthName } from "../utils
 import { getExampledata, getFirebaseExampledata } from "../utils/exampleData";
 import i18next from "i18next";
 import Modal from 'react-modal';
+import swal from 'sweetalert';
 
-import { collection, getDocs, addDoc, setDoc, updateDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, setDoc, updateDoc, doc, query, orderBy, getDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
 export const ReservationList = () => {
@@ -61,22 +62,15 @@ export const ReservationList = () => {
 
     const userCollectionRef = collection(db, 'reservations');
     const updateDataFromAPI = async () => {
-        const data = await getDocs(userCollectionRef);
+        const querySnapshot = await getDocs(query(userCollectionRef, orderBy('date')));
         setReservationData(
-            data.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-        )
-    }
+            querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+        );
+    };
 
     const sendDataToAPI = async () => {
         await addDoc(userCollectionRef, { reservationData });
         console.log('Data sent')
-    }
-
-    const updateDataOnAPI = async (currentItemIndex) => {
-        ///console.log(currentID)
-        await updateDoc(doc(db, "reservations", doc.currentID), {
-            reservationData
-        });
     }
 
     const sendInitialData = async () => {
@@ -84,8 +78,8 @@ export const ReservationList = () => {
     }
 
     useEffect(() => {
-        updateDataFromAPI();
         // sendInitialData()
+        updateDataFromAPI();
     }, [])
 
     useEffect(() => {
@@ -93,6 +87,7 @@ export const ReservationList = () => {
     }, [reservationData])
 
     const handleDateChange = (amount) => {
+        updateDataFromAPI();
         const newDate = new Date(currentDate);
         newDate.setDate(currentDate.getDate() + amount);
         setCurrentDate(newDate);
@@ -125,22 +120,58 @@ export const ReservationList = () => {
             if (bookingToUpdate) {
                 const { key, period } = selectedBooking;
                 const periodArray = bookingToUpdate[key][period];
-                periodArray.push({
+                const newData = {
                     guests: formData.guests,
                     fullname: formData.fullName,
                     phone: formData.phone,
                     email: formData.email
-                });
+                };
+                periodArray.push(newData);
 
                 // setReservationData(updatedData);
-                updateDataOnAPI();
+                updateDataOnAPI(newData, selectedBooking);
                 setIsModalOpen(false);
+                updateDataFromAPI();
+                swal(
+                    i18next.t('reservation-booking-success'),
+                    i18next.t('reservation-booking-confirmed', {
+                        fullname: newData.fullname,
+                        email: newData.email,
+                        phone: newData.phone,
+                        guests: newData.guests,
+                        date: getCurrentDateString(currentDate),
+                        sector: i18next.t(`reservation-${selectedBooking.key}`),
+                        period: i18next.t(`reservation-${selectedBooking.period}`)
+                    }),
+                    "success"
+                );
             }
         } catch (error) {
             console.error('Failed to update reservation data:', error);
 
         };
+
     }
+
+    const updateDataOnAPI = async (newData, selectedBooking) => {
+        try {
+            // Get the current reservation data
+            const reservationDocRef = doc(db, 'reservations', currentID);
+            const reservationDocSnap = await getDoc(reservationDocRef);
+            const reservationData = reservationDocSnap.data();
+
+            // Add the new data to the appropriate period
+            reservationData[selectedBooking.key][selectedBooking.period].push(newData);
+
+            // Update the entire document with the modified data
+            await setDoc(reservationDocRef, reservationData);
+
+            console.log('Document successfully updated');
+        } catch (error) {
+            console.error('Error updating document: ', error);
+        }
+    };
+
 
     let noMatching = true
     return (
@@ -177,9 +208,13 @@ export const ReservationList = () => {
                     if (item.date === getCurrentDateString(currentDate)) {
                         handleSetCurrentID(item.id, itemindex);
                         noMatching = false;
+
+                        // Extract the keys and sort them since firestore gave me the array in whatever order it wants...
+                        const sortedKeys = Object.keys(item).filter(key => key !== 'date' && key !== 'id').sort();
+
                         return (
                             <tbody className="bg-orange-100" key={itemindex}>
-                                {Object.keys(item).map((key, index) => {
+                                {sortedKeys.map((key, index) => {
                                     if (key !== 'date' && key !== 'id') {
                                         return (
                                             <>

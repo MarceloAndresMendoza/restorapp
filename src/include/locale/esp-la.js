@@ -143,6 +143,10 @@ i18next.init({
                 "reservation-close": "Cancelar",
                 "reservation-submit": "Reservar",
 
+                "reservation-booking-success": "¡Reserva realizada!",
+                "reservation-booking-confirmed": "Se ha confirmado su reserva:\n\nNombre: {{fullname}}\nCorreo: {{email}}\nTeléfono: {{phone}}\nNúmero de invitados: {{guests}}\n\nPara el día {{date}} en el sector {{sector}}, por la {{period}}.",
+
+
                 // My Reservation
                 "my-reservation-title": "Mi reserva",
                 "my-reservation-text": "Ingrese su RUT para encontrar su reserva y verificar los detalles.",
