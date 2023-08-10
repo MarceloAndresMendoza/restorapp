@@ -1,21 +1,26 @@
-import i18next from "i18next";
 import { useEffect, useState } from "react";
-import { getExampledata } from "../utils/exampleData";
-import { getDataAPI } from "../utils/API";
+import { getCurrentDateString, getDayOfWeekString, getMonthName } from "../utils/date-utils";
+import { getExampledata, getFirebaseExampledata } from "../utils/exampleData";
+import i18next from "i18next";
 import Modal from 'react-modal';
+
+import { collection, getDocs, addDoc, setDoc, updateDoc, doc } from 'firebase/firestore';
+import { db } from '../config/firebase';
 
 export const ReservationList = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const today = new Date();
     const [currentDate, setCurrentDate] = useState(today);
+    const [currentID, setCurrentID] = useState(null);
+    const [currentItemIndex, setCurrentItemIndex] = useState(null);
 
     const [selectedBooking, setSelectedBooking] = useState(null);
 
     const [availablesector1, setAvailableSector1] = useState(4);
     const [availablesector2, setAvailableSector2] = useState(4);
     const [availablesector3, setAvailableSector3] = useState(4);
-    // const [reservationData, setReservationData] = useState(getExampledata());
+
     const [reservationData, setReservationData] = useState([]);
 
     const [formData, setFormData] = useState({
@@ -32,50 +37,66 @@ export const ReservationList = () => {
         guests: "",
     });
 
+    const handleSetCurrentID = (id, itemindex) => {
+        id !== currentID && setCurrentID(id);
+        itemindex !== currentItemIndex && setCurrentItemIndex(itemindex);
+        id !== currentID && console.log('Selected ID:', currentID)
+    }
 
     const handleOnBookHereClick = (key, period) => {
         return () => {
             const availableKey = eval(`available${key}`);
-            const morningLength = reservationData.find(item => item.id === getCurrentDateString())?.[key]?.morning.length || 0;
-            const afternoonLength = reservationData.find(item => item.id === getCurrentDateString())?.[key]?.afternoon.length || 0;
+            const morningLength = reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length || 0;
+            const afternoonLength = reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length || 0;
             const availableCount = +(availableKey) - (period === 'morning' ? morningLength : afternoonLength);
 
             const message = `Key: ${key}, Period: ${period}, Available Count: ${availableCount}`;
             console.log(message);
             setSelectedBooking({ key, period });
 
+            // TODO Save Code Here
             setIsModalOpen(true);
         };
     };
 
-    const getDayOfWeekString = (dayNumber) => {
-        return i18next.t(`weekdayNames.${dayNumber}`);
-    };
-
-    const getMonthName = (monthIndex) => {
-        return i18next.t(`monthNames.${monthIndex}`);
-    };
-
+    const userCollectionRef = collection(db, 'reservations');
     const updateDataFromAPI = async () => {
-        const data = await getDataAPI();
-        console.log(data);
-        setReservationData(data)
+        const data = await getDocs(userCollectionRef);
+        setReservationData(
+            data.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+        )
+    }
+
+    const sendDataToAPI = async () => {
+        await addDoc(userCollectionRef, { reservationData });
+        console.log('Data sent')
+    }
+
+    const updateDataOnAPI = async (currentItemIndex) => {
+        ///console.log(currentID)
+        await updateDoc(doc(db, "reservations", doc.currentID), {
+            reservationData
+        });
+    }
+
+    const sendInitialData = async () => {
+        await addDoc(userCollectionRef, getFirebaseExampledata())
     }
 
     useEffect(() => {
         updateDataFromAPI();
+        // sendInitialData()
     }, [])
+
+    useEffect(() => {
+        console.log(reservationData);
+    }, [reservationData])
 
     const handleDateChange = (amount) => {
         const newDate = new Date(currentDate);
         newDate.setDate(currentDate.getDate() + amount);
         setCurrentDate(newDate);
     };
-
-    const getCurrentDateString = () => {
-        const stringifiedDate = currentDate.getDate() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getFullYear();
-        return stringifiedDate;
-    }
 
     const handleBookNow = async () => {
         const errors = {};
@@ -96,12 +117,11 @@ export const ReservationList = () => {
             return;
         }
         console.log("Form data:", formData);
-        
 
 
         try {
             const updatedData = [...reservationData];
-            const bookingToUpdate = updatedData.find(item => item.id === getCurrentDateString());
+            const bookingToUpdate = updatedData.find(item => item.date === getCurrentDateString(currentDate));
             if (bookingToUpdate) {
                 const { key, period } = selectedBooking;
                 const periodArray = bookingToUpdate[key][period];
@@ -112,19 +132,19 @@ export const ReservationList = () => {
                     email: formData.email
                 });
 
-                await updateDataAPI(updatedData);
-
-                setReservationData(updatedData);
+                // setReservationData(updatedData);
+                updateDataOnAPI();
                 setIsModalOpen(false);
             }
         } catch (error) {
             console.error('Failed to update reservation data:', error);
-        }
-    };
+
+        };
+    }
 
     let noMatching = true
     return (
-        <>
+        <div className="flex flex-col justify-center w-full items-center">
             <div className="my-4 text-xl">
                 <div className="flex flex-row gap-4 items-center">
                     <i className="fas fa-calendar-alt text-purple-500"></i> {i18next.t('reservation-date-current')}
@@ -145,7 +165,7 @@ export const ReservationList = () => {
                     </div>
                 </div>
             </div>
-            <table className="table-auto border-collapse w-full text-xl">
+            <table className="table-auto border-collapse w-full max-w-[1000px] text-xl">
                 <thead className="bg-orange-700 text-white">
                     <tr>
                         <th className="p-4">{i18next.t('reservation-sector')}</th>
@@ -154,12 +174,13 @@ export const ReservationList = () => {
                     </tr>
                 </thead>
                 {reservationData.map((item, itemindex) => {
-                    if (item.id === getCurrentDateString()) {
+                    if (item.date === getCurrentDateString(currentDate)) {
+                        handleSetCurrentID(item.id, itemindex);
                         noMatching = false;
                         return (
                             <tbody className="bg-orange-100" key={itemindex}>
                                 {Object.keys(item).map((key, index) => {
-                                    if (key !== 'id') {
+                                    if (key !== 'date' && key !== 'id') {
                                         return (
                                             <>
                                                 <tr className="border-t-2 border-orange-200" key={index}>
@@ -171,10 +192,10 @@ export const ReservationList = () => {
                                                     </td>
                                                     <td className="p-4 text-center font-bold flex flex-row items-center gap-4 justify-between">
                                                         {
-                                                            +(eval(`available${key}`)) - reservationData.find(item => item.id === getCurrentDateString())?.[key]?.morning.length
+                                                            +(eval(`available${key}`)) - reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length
                                                             // console.log(eval(`available${key}`))
                                                         }
-                                                        {+(eval(`available${key}`)) - (reservationData.find(item => item.id === getCurrentDateString())?.[key]?.morning.length || 0) !== 0 ? (
+                                                        {+(eval(`available${key}`)) - (reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length || 0) !== 0 ? (
                                                             <button onClick={handleOnBookHereClick(key, 'morning')} className="rounded-full bg-orange-600 text-orange-100 px-4 py-1 shadow-md hover:shadow-xl hover:text-white hover:bg-orange-700">{i18next.t('reservation-book-now')}</button>
                                                         ) : (
                                                             <button className="rounded-full bg-orange-200 text-orange-400 px-4 py-1" disabled>{i18next.t('reservation-book-not-available')}</button>
@@ -187,9 +208,9 @@ export const ReservationList = () => {
                                                     </td>
                                                     <td className="p-4 text-center font-bold flex flex-row items-center gap-4 justify-between">
                                                         {
-                                                            +(eval(`available${key}`)) - reservationData.find(item => item.id === getCurrentDateString())?.[key]?.afternoon.length
+                                                            +(eval(`available${key}`)) - reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length
                                                         }
-                                                        {+(eval(`available${key}`)) - (reservationData.find(item => item.id === getCurrentDateString())?.[key]?.afternoon.length || 0) !== 0 ? (
+                                                        {+(eval(`available${key}`)) - (reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length || 0) !== 0 ? (
                                                             <button onClick={handleOnBookHereClick(key, 'afternoon')} className="rounded-full bg-orange-600 text-orange-100 px-4 py-1 shadow-md hover:shadow-xl hover:text-white hover:bg-orange-700">{i18next.t('reservation-book-now')}</button>
                                                         ) : (
                                                             <button className="rounded-full bg-orange-200 text-orange-400 px-4 py-1" disabled>{i18next.t('reservation-book-not-available')}</button>
@@ -340,6 +361,6 @@ export const ReservationList = () => {
                     </div>
                 </div>
             </Modal>
-        </>
+        </div>
     )
 }

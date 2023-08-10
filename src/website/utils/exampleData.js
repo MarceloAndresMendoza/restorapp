@@ -201,3 +201,107 @@ export const getExampledata = () => {
     ]
     return data;
 }
+
+
+export const getFirebaseExampledata = () => {
+    const data = 
+        {
+            date: "10-8-2023",
+            sector1: {
+                morning:
+                    [
+                        {
+                            fullname: "Juan Juan Harry",
+                            email: "juanito@mail.com",
+                            phone: "+56912345678",
+                            guests: 5
+                        },
+
+                        {
+                            fullname: "Roberto Nicolini Gutiérrez",
+                            email: "roberto.12@mail.com",
+                            phone: "+569124535678",
+                            guests: 2
+                        },
+                        {
+                            fullname: "Elena García Pérez",
+                            email: "elena89@mail.com",
+                            phone: "+56912345678",
+                            guests: 3
+                        }
+                    ],
+
+                afternoon: [
+                        {
+                            fullname: "Javier Rosales Mella",
+                            email: "javi@mail.com",
+                            phone: "+56956745677",
+                            guests: 3
+                        },
+                        {
+                            fullname: "Marcela Martínez Real",
+                            email: "marce.martinez@mail.com",
+                            phone: "+569124549678",
+                            guests: 4
+                        }
+                ],
+            },
+            sector2: {
+                morning: [
+                        {
+                            fullname: "Sofía López Ruiz",
+                            email: "sofialopez@mail.com",
+                            phone: "+56998765432",
+                            guests: 1
+                        },
+                        {
+                            fullname: "Alejandro Fernández González",
+                            email: "alejandrofg@mail.com",
+                            phone: "+56911223344",
+                            guests: 2
+                        }
+                ],
+                afternoon: [
+                        {
+                            fullname: "Rosa Martínez Soto",
+                            email: "rosamartinez@mail.com",
+                            phone: "+56955556666",
+                            guests: 1
+                        }
+                ],
+            },
+            sector3: {
+                morning: [
+                        {
+                            fullname: "Diego Rodríguez López",
+                            email: "diegorodriguez@mail.com",
+                            phone: "+56977778888",
+                            guests: 2
+                        }
+                ],
+                afternoon: [
+                        {
+                            fullname: "Carolina Silva Valdés",
+                            email: "carolina.silva@mail.com",
+                            phone: "+56999990000",
+                            guests: 4
+                        },
+                        {
+                            fullname: "Andrés Pérez Reyes",
+                            email: "andres.perez@mail.com",
+                            phone: "+56911112222",
+                            guests: 3
+                        },
+                        {
+                            fullname: "Patricia González Hernández",
+                            email: "patriciagh@mail.com",
+                            phone: "+56933334444",
+                            guests: 2
+                        }
+                ],
+            },
+        }
+    return data;
+}
+
+
