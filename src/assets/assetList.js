@@ -9,6 +9,8 @@ import menuSweetsHeader from './photos/mochis.jpg';
 import menuDrinksHeader from './photos/tea-cup.jpg';
 import descImg from './branding/tori.png';
 import restorapp from './branding/restorapp.jpg';
+import flagChile from './icons/flag-chile.jpg';
+import flagUsa from './icons/flag-usa.jpg';
 
 import i18next from 'i18next';
 
@@ -37,6 +39,10 @@ export const getAsset = (file) => {
             return { image: descImg, alt: alt };
         case 'restorapp':
             return { image: restorapp, alt: alt };
+        case 'flagChile':
+            return { image: flagChile, alt: alt };
+        case 'flagUsa':
+            return { image: flagUsa, alt: alt };
         default:
             return null;
     }
