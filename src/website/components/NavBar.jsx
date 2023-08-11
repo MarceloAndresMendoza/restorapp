@@ -48,7 +48,7 @@ export const NavBar = () => {
 
         </ul>
 
-        <div className="flex items-center space-x-2 p-5 min-w-[100px] w-full justify-between">
+        <div className="flex items-center space-x-2 p-5 min-w-[100px] sm:w-[100px] w-full justify-between sm:justify-end">
           <button
             className={`text-orange-400 font-medium ${selectedLanguage === 'en' ? 'underline' : ''}`}
             onClick={() => handleLanguageChange('en')}
