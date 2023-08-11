@@ -105,14 +105,19 @@ export const addEngLanguage = () => {
             "reservation-sector": "Sector",
             "reservation-time": "Time",
             "reservation-available": "Available",
+            "reservation-done": "Reservations",
             "reservation-not-available": "Reservations not available for today",
+            "reservation-not-available-admin": "Reservations not enabled for today. Press the next button to enable this day to reserve.",
+            "reservation-loading": "Wait for a moment...",
 
             "reservation-sector1": "Indoor",
             "reservation-sector2": "Outdoor",
             "reservation-sector3": "Terrace",
 
             "reservation-morning": "Morning",
+            "reservation-morning-short": "AM",
             "reservation-afternoon": "Afternoon",
+            "reservation-afternoon-short": "PM",
 
             "reservation-book-now": "Book Here",
             "reservation-book-not-available": "Not available",
@@ -145,6 +150,9 @@ export const addEngLanguage = () => {
 
             "admin-title": "Admin",
             "admin-text": "Details of the reservations made.",
+            "admin-confirm-delete": "Are you sure you want to delete this reservation?",
+            "admin-deleted": "Booking deleted",
+            "admin-warning": "Warning!",
 
             "footer-copyright-appname": "Restorapp",
             "footer-copyright-author": "Marcelo Mendoza",

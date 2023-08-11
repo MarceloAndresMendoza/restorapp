@@ -12,3 +12,22 @@ export const getDayOfWeekString = (dayNumber) => {
 export const getMonthName = (monthIndex) => {
     return i18next.t(`monthNames.${monthIndex}`);
 };
+
+export const emptyDayData = (date) => {
+    const data = {
+        date: date,
+        sector1: {
+            morning: [],
+            afternoon: [],
+        },
+        sector2: {
+            morning: [],
+            afternoon: [],
+        },
+        sector3: {
+            morning: [],
+            afternoon: [],
+        },
+    };
+    return data;
+}

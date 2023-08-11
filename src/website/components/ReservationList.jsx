@@ -9,20 +9,17 @@ import { collection, getDocs, addDoc, setDoc, updateDoc, doc, query, orderBy, ge
 import { db } from '../config/firebase';
 
 export const ReservationList = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     const today = new Date();
+    const [reservationData, setReservationData] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentDate, setCurrentDate] = useState(today);
     const [currentID, setCurrentID] = useState(null);
     const [currentItemIndex, setCurrentItemIndex] = useState(null);
-
+    const [dataArrived, setDataArrived] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState(null);
-
     const [availablesector1, setAvailableSector1] = useState(4);
     const [availablesector2, setAvailableSector2] = useState(4);
     const [availablesector3, setAvailableSector3] = useState(4);
-
-    const [reservationData, setReservationData] = useState([]);
 
     const [formData, setFormData] = useState({
         fullName: "",
@@ -66,12 +63,8 @@ export const ReservationList = () => {
         setReservationData(
             querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }))
         );
+        setDataArrived(true);
     };
-
-    const sendDataToAPI = async () => {
-        await addDoc(userCollectionRef, { reservationData });
-        console.log('Data sent')
-    }
 
     const sendInitialData = async () => {
         await addDoc(userCollectionRef, getFirebaseExampledata())
@@ -83,7 +76,7 @@ export const ReservationList = () => {
     }, [])
 
     useEffect(() => {
-        console.log(reservationData);
+        // console.log(reservationData);
     }, [reservationData])
 
     const handleDateChange = (amount) => {
@@ -265,17 +258,29 @@ export const ReservationList = () => {
                 })
                 }
                 {
-                    noMatching && (
-                        <>
-                            <tbody className="bg-orange-100">
-                                <tr className="border-t-2 border-orange-200" >
-                                    <td className="px-4 font-bold text-center text-xl p-8 text-orange-500 h-[363px]" colSpan={3}>
-                                        {i18next.t(`reservation-not-available`)}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </>
-                    )
+                    noMatching && (() => {
+                        if (dataArrived) {
+                            return (
+                                <tbody className="bg-orange-100">
+                                    <tr className="border-t-2 border-orange-200">
+                                        <td className="px-4 font-bold text-center text-xl p-8 text-orange-500 h-[363px]" colSpan={3}>
+                                            {i18next.t(`reservation-not-available`)}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            );
+                        } else {
+                            return (
+                                <tbody className="bg-orange-100">
+                                    <tr className="border-t-2 border-orange-200">
+                                        <td className="px-4 font-bold text-center text-xl p-8 text-orange-500 h-[363px]" colSpan={3}>
+                                            {i18next.t(`reservation-loading`)}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            );
+                        }
+                    })()
                 }
             </table >
             <Modal

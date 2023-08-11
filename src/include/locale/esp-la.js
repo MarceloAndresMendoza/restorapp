@@ -114,14 +114,19 @@ export const initDefaultLanguageEs = () => {
                     "reservation-sector": "Sector",
                     "reservation-time": "Horario",
                     "reservation-available": "Disponible",
+                    "reservation-done": "Reservas",
                     "reservation-not-available": "Reservas no disponibles para hoy",
+                    "reservation-not-available-admin": "Reservas no habilitadas para hoy. Presione el botón a continuación para habilitar las reservas para este día.",
+                    "reservation-loading": "Espere un momento...",
 
                     "reservation-sector1": "Interior",
                     "reservation-sector2": "Exterior",
                     "reservation-sector3": "Terraza",
 
                     "reservation-morning": "Mañana",
+                    "reservation-morning-short": "AM",
                     "reservation-afternoon": "Tarde",
+                    "reservation-afternoon-short": "PM",
 
                     "reservation-book-now": "Reservar aquí",
                     "reservation-book-not-available": "No disponible",
@@ -157,6 +162,9 @@ export const initDefaultLanguageEs = () => {
                     // Admin
                     "admin-title": "Admin",
                     "admin-text": "Detalles de las reservas realizadas.",
+                    "admin-confirm-delete": "¿Desea realmente eliminar este registro?",
+                    "admin-deleted": "Reserva eliminada",
+                    "admin-warning": "¡Advertencia!",
 
                     // Footer
                     "footer-copyright-appname": "Restorapp",
