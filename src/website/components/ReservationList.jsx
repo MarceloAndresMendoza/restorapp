@@ -72,10 +72,6 @@ export const ReservationList = () => {
         updateDataFromAPI();
     }, [])
 
-    useEffect(() => {
-        // console.log(reservationData);
-    }, [reservationData])
-
     const handleDateChange = (amount) => {
         updateDataFromAPI();
         const newDate = new Date(currentDate);
@@ -121,7 +117,6 @@ export const ReservationList = () => {
                 // setReservationData(updatedData);
                 updateDataOnAPI(newData, selectedBooking);
                 setIsModalOpen(false);
-                updateDataFromAPI();
                 swal(
                     i18next.t('reservation-booking-success'),
                     i18next.t('reservation-booking-confirmed', {
@@ -135,6 +130,10 @@ export const ReservationList = () => {
                     }),
                     "success"
                 );
+                setTimeout(() => {
+                    updateDataFromAPI();
+                    // =3
+                }, 1000);
             }
         } catch (error) {
             console.error('Failed to update reservation data:', error);
