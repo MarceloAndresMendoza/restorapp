@@ -24,7 +24,7 @@ export const Menu = () => {
 
   return (
     <>
-      <Header small='true' />
+      <Header small='true' title={i18next.t('brand-main-title')}/>
 
       <div className="container mx-auto p-20">
         <div className="flex flex-col sm:flex-row w-full justify-between items-end sm:items-start sm:gap-10">

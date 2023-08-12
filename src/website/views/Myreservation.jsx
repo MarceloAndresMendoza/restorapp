@@ -6,7 +6,7 @@ export const Myreservation = () => {
     const param  = useParams(); //React hook
     return (
         <>
-            <Header small='true' />
+            <Header small='true' title={i18next.t('brand-main-title')}/>
             <div className="container mx-auto p-4">
                 <div className="flex flex-col sm:flex-row w-full justify-between items-end sm:items-start sm:gap-10">
                     <h1 className="text-6xl font-semibold mb-4 text-accent whitespace-nowrap">{i18next.t("my-reservation-title")}</h1>
