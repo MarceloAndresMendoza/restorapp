@@ -14,7 +14,8 @@ export const NavBar = () => {
     setSelectedLanguage(language);
     localStorage.setItem('selectedLanguage', language);
     i18next.changeLanguage(language);
-    window.location.reload();
+    window.location.href = "https://marceloandresmendoza.github.io/restorapp";
+
   };
 
   return (
@@ -22,25 +23,25 @@ export const NavBar = () => {
       <div className="flex justify-between">
         <ul className="flex items-center sm:justify-normal justify-between gap-4 sm:gap-2 ml-2">
           <li>
-            <NavLink to="/" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
+            <NavLink to="/restorapp" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
               <i className="fa-solid fa-house"></i>
               <div className='hidden sm:block'>{i18next.t('navbar-link-index')}</div>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/menu" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
+            <NavLink to="/restorapp/menu" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
               <i className="fa-solid fa-mug-hot"></i>
               <div className='hidden sm:block'>{i18next.t('navbar-link-menu')}</div>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/reservations" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
+            <NavLink to="/restorapp/reservations" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
               <i className="fa-solid fa-check-to-slot"></i>
               <div className='hidden sm:block'>{i18next.t('navbar-link-reservation')}</div>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/admin" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
+            <NavLink to="/restorapp/admin" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
               <i className="fa-solid fa-lock"></i>
               <div className='hidden sm:block'>{i18next.t('navbar-link-admin')}</div>
             </NavLink>

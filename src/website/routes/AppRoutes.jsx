@@ -10,10 +10,10 @@ export const AppRouter = () => {
         <>
             <div className={currentTheme}>
                 <Routes>
-                    <Route path='/' element={<Index />} />
-                    <Route path = 'menu' element = { <Menu /> } />
-                    <Route path = 'admin' element = { <Admin /> } />
-                    <Route path='reservations'>
+                    <Route path='/restorapp' element={<Index />} />
+                    <Route path = '/restorapp/menu' element = { <Menu /> } />
+                    <Route path = '/restorapp/admin' element = { <Admin /> } />
+                    <Route path='/restorapp/reservations'>
                         <Route index element = { <Reservations /> } />
                         <Route path = ':reservationID' element = { <Myreservation /> } />
                     </Route>

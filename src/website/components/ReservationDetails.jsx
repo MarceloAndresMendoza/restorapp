@@ -16,9 +16,6 @@ export const ReservationList = () => {
     const [currentItemIndex, setCurrentItemIndex] = useState(null);
     const [dataArrived, setDataArrived] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState(null);
-    const [availablesector1, setAvailableSector1] = useState(4);
-    const [availablesector2, setAvailableSector2] = useState(4);
-    const [availablesector3, setAvailableSector3] = useState(4);
 
     const handleSetCurrentID = (id, itemindex) => {
         id !== currentID && setCurrentID(id);
@@ -176,7 +173,7 @@ export const ReservationList = () => {
                                                         <div>
                                                             {
                                                                 reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length
-                                                            }/{eval(`available${key}`)}
+                                                            }/4
                                                         </div>
 
                                                         <div className="w-full ml-4">
@@ -209,7 +206,7 @@ export const ReservationList = () => {
                                                             {
                                                                 reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length
                                                                 // console.log(eval(`available${key}`))
-                                                            }/{eval(`available${key}`)}
+                                                            }/4
                                                         </div>
                                                         <div className="w-full ml-4">
                                                             {Object.keys(item[key]?.afternoon || {}).sort().map(personKey => (

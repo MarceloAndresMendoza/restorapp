@@ -17,9 +17,6 @@ export const ReservationList = () => {
     const [currentItemIndex, setCurrentItemIndex] = useState(null);
     const [dataArrived, setDataArrived] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState(null);
-    const [availablesector1, setAvailableSector1] = useState(4);
-    const [availablesector2, setAvailableSector2] = useState(4);
-    const [availablesector3, setAvailableSector3] = useState(4);
 
     const [formData, setFormData] = useState({
         fullName: "",
@@ -43,7 +40,7 @@ export const ReservationList = () => {
 
     const handleOnBookHereClick = (key, period) => {
         return () => {
-            const availableKey = eval(`available${key}`);
+            const availableKey = 4;
             const morningLength = reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length || 0;
             const afternoonLength = reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length || 0;
             const availableCount = +(availableKey) - (period === 'morning' ? morningLength : afternoonLength);
@@ -220,10 +217,10 @@ export const ReservationList = () => {
                                                     </td>
                                                     <td className="p-4 text-center font-bold flex flex-row items-center gap-4 justify-between">
                                                         {
-                                                            +(eval(`available${key}`)) - reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length
+                                                            4 - reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length
                                                             // console.log(eval(`available${key}`))
                                                         }
-                                                        {+(eval(`available${key}`)) - (reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length || 0) !== 0 ? (
+                                                        {4 - (reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length || 0) !== 0 ? (
                                                             <button onClick={handleOnBookHereClick(key, 'morning')} className="text-sm sm:text-xl rounded-full bg-orange-600 text-orange-100 px-4 py-1 shadow-md hover:shadow-xl hover:text-white hover:bg-orange-700">{i18next.t('reservation-book-now')}</button>
                                                         ) : (
                                                             <button className="rounded-full bg-orange-200 text-orange-400 px-4 py-1 text-sm sm:text-xl" disabled>{i18next.t('reservation-book-not-available')}</button>
@@ -236,9 +233,9 @@ export const ReservationList = () => {
                                                     </td>
                                                     <td className="p-4 text-center font-bold flex flex-row items-center gap-4 justify-between">
                                                         {
-                                                            +(eval(`available${key}`)) - reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length
+                                                            4 - reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length
                                                         }
-                                                        {+(eval(`available${key}`)) - (reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length || 0) !== 0 ? (
+                                                        {4 - (reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length || 0) !== 0 ? (
                                                             <button onClick={handleOnBookHereClick(key, 'afternoon')} className="text-sm sm:text-xl rounded-full bg-orange-600 text-orange-100 px-4 py-1 shadow-md hover:shadow-xl hover:text-white hover:bg-orange-700">{i18next.t('reservation-book-now')}</button>
                                                         ) : (
                                                             <button className="rounded-full bg-orange-200 text-orange-400 px-4 py-1 text-sm sm:text-xl" disabled>{i18next.t('reservation-book-not-available')}</button>
