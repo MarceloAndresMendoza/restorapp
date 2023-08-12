@@ -171,7 +171,7 @@ export const ReservationList = () => {
         <div className="flex flex-col justify-center w-full items-center">
             <div className="my-4 text-xl">
                 <div className="flex flex-row gap-4 items-center">
-                    <i className="fas fa-calendar-alt text-purple-500"></i> {i18next.t('reservation-date-current')}
+                    <i className="fas fa-calendar-alt text-purple-500"></i><span className=" text-sm sm:text-base">{i18next.t('reservation-date-current')}</span>
                     <div className="ml-2 flex flex-row gap-8 items-center">
                         <button
                             className="text-purple-500 hover:text-purple-700 focus:outline-none p-4 shadow-md sm:shadow-none rounded-md"
@@ -212,10 +212,10 @@ export const ReservationList = () => {
                                         return (
                                             <>
                                                 <tr className="border-t-2 border-orange-200" key={index}>
-                                                    <td className="px-4 font-bold" rowSpan={2}>
+                                                    <td className="px-4 font-bold text-sm sm:text-xl" rowSpan={2}>
                                                         {i18next.t(`reservation-${key}`)}
                                                     </td>
-                                                    <td className="p-4">
+                                                    <td className="p-4 text-sm sm:text-xl">
                                                         <i className="fas fa-sun text-yellow-400"></i> {i18next.t('reservation-morning')}
                                                     </td>
                                                     <td className="p-4 text-center font-bold flex flex-row items-center gap-4 justify-between">
@@ -224,14 +224,14 @@ export const ReservationList = () => {
                                                             // console.log(eval(`available${key}`))
                                                         }
                                                         {+(eval(`available${key}`)) - (reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length || 0) !== 0 ? (
-                                                            <button onClick={handleOnBookHereClick(key, 'morning')} className="rounded-full bg-orange-600 text-orange-100 px-4 py-1 shadow-md hover:shadow-xl hover:text-white hover:bg-orange-700">{i18next.t('reservation-book-now')}</button>
+                                                            <button onClick={handleOnBookHereClick(key, 'morning')} className="text-sm sm:text-xl rounded-full bg-orange-600 text-orange-100 px-4 py-1 shadow-md hover:shadow-xl hover:text-white hover:bg-orange-700">{i18next.t('reservation-book-now')}</button>
                                                         ) : (
-                                                            <button className="rounded-full bg-orange-200 text-orange-400 px-4 py-1" disabled>{i18next.t('reservation-book-not-available')}</button>
+                                                            <button className="rounded-full bg-orange-200 text-orange-400 px-4 py-1 text-sm sm:text-xl" disabled>{i18next.t('reservation-book-not-available')}</button>
                                                         )}
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td className="p-4">
+                                                    <td className="p-4 text-sm sm:text-xl">
                                                         <i className="fas fa-cloud-sun text-yellow-800"></i> {i18next.t('reservation-afternoon')}
                                                     </td>
                                                     <td className="p-4 text-center font-bold flex flex-row items-center gap-4 justify-between">
@@ -239,9 +239,9 @@ export const ReservationList = () => {
                                                             +(eval(`available${key}`)) - reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length
                                                         }
                                                         {+(eval(`available${key}`)) - (reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length || 0) !== 0 ? (
-                                                            <button onClick={handleOnBookHereClick(key, 'afternoon')} className="rounded-full bg-orange-600 text-orange-100 px-4 py-1 shadow-md hover:shadow-xl hover:text-white hover:bg-orange-700">{i18next.t('reservation-book-now')}</button>
+                                                            <button onClick={handleOnBookHereClick(key, 'afternoon')} className="text-sm sm:text-xl rounded-full bg-orange-600 text-orange-100 px-4 py-1 shadow-md hover:shadow-xl hover:text-white hover:bg-orange-700">{i18next.t('reservation-book-now')}</button>
                                                         ) : (
-                                                            <button className="rounded-full bg-orange-200 text-orange-400 px-4 py-1" disabled>{i18next.t('reservation-book-not-available')}</button>
+                                                            <button className="rounded-full bg-orange-200 text-orange-400 px-4 py-1 text-sm sm:text-xl" disabled>{i18next.t('reservation-book-not-available')}</button>
                                                         )}
                                                     </td>
                                                 </tr>
@@ -290,10 +290,10 @@ export const ReservationList = () => {
                 className="modal-content"
                 overlayClassName="modal-overlay"
             >
-                <div className="w-full h-full bg-[#aaaaaaaa] backdrop-blur-sm fixed top-0 left-0 ">
+                <div className=" w-screen h-screen sm:bg-[#aaaaaaaa] sm:backdrop-blur-sm fixed top-0 left-0 bg-orange-700">
                     <div className="fixed inset-0 flex items-center justify-center z-50 shadow-sm">
-                        <div className="bg-white rounded-lg shadow-lg min-w-[600px]">
-                            <div className="bg-orange-600 text-white px-8 py-4 rounded-t-lg">
+                        <div className="bg-white sm:rounded-lg shadow-lg w-full sm:w-auto sm:min-w-[600px]">
+                            <div className="bg-orange-600 text-white px-8 py-4 sm:rounded-t-lg">
                                 <h2 className="text-xl font-semibold">{i18next.t('reservation-modal-title')}</h2>
                             </div>
                             <div className="my-4 mx-8">

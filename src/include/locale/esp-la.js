@@ -24,6 +24,7 @@ export const initDefaultLanguageEs = () => {
 
                     "alt-flagChile": "Bandera de Chile",
                     "alt-flagUsa": "Bandera de USA",
+                    "alt-flagBrazil": "Bandera de Brasil",
 
                     "brand-main-title": "Matcha",
                     "brand-main-subtitle": "Disfruta la Dulzura de Japón",
@@ -165,6 +166,8 @@ export const initDefaultLanguageEs = () => {
                     "admin-confirm-delete": "¿Desea realmente eliminar este registro?",
                     "admin-deleted": "Reserva eliminada",
                     "admin-warning": "¡Advertencia!",
+                    "admin-day-enabled-title": "¡Correcto!",
+                    "admin-day-enabled-text": "Día habilitado para reservas",
 
                     // Footer
                     "footer-copyright-appname": "Restorapp",

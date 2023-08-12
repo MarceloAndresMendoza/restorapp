@@ -20,6 +20,7 @@ export const addEngLanguage = () => {
 
             "alt-flagChile": "Flag of Chile",
             "alt-flagUsa": "Flag of USA",
+            "alt-flagBrazil": "Flag of Brazil",
 
             "brand-main-title": "Matcha",
             "brand-main-subtitle": "Enjoy the Sweetness of Japan",
@@ -107,7 +108,7 @@ export const addEngLanguage = () => {
             "reservation-available": "Available",
             "reservation-done": "Reservations",
             "reservation-not-available": "Reservations not available for today",
-            "reservation-not-available-admin": "Reservations not enabled for today. Press the next button to enable this day to reserve.",
+            "reservation-not-available-admin": "Reservations not enabled for today. Press the next button to enable this day for reserve.",
             "reservation-loading": "Wait for a moment...",
 
             "reservation-sector1": "Indoor",
@@ -153,6 +154,8 @@ export const addEngLanguage = () => {
             "admin-confirm-delete": "Are you sure you want to delete this reservation?",
             "admin-deleted": "Booking deleted",
             "admin-warning": "Warning!",
+            "admin-day-enabled-title": "Done!",
+            "admin-day-enabled-text": "Day enabled to booking!",
 
             "footer-copyright-appname": "Restorapp",
             "footer-copyright-author": "Marcelo Mendoza",

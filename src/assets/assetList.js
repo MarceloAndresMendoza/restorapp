@@ -11,6 +11,7 @@ import descImg from './branding/tori.png';
 import restorapp from './branding/restorapp.jpg';
 import flagChile from './icons/flag-chile.jpg';
 import flagUsa from './icons/flag-usa.jpg';
+import flagBrazil from './icons/flag-brazil.jpg';
 
 import i18next from 'i18next';
 
@@ -43,6 +44,8 @@ export const getAsset = (file) => {
             return { image: flagChile, alt: alt };
         case 'flagUsa':
             return { image: flagUsa, alt: alt };
+        case 'flagBrazil':
+            return { image: flagBrazil, alt: alt };
         default:
             return null;
     }

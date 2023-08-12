@@ -166,33 +166,33 @@ export const ReservationList = () => {
                                         return (
                                             <>
                                                 <tr className="border-t-2 border-orange-200" key={index}>
-                                                    <td className="px-4 font-bold" rowSpan={2}>
+                                                    <td className="px-4 font-bold -rotate-90 sm:rotate-0 w-3 sm:w-20" rowSpan={2}>
                                                         {i18next.t(`reservation-${key}`)}
                                                     </td>
                                                     <td className="p-4">
                                                         <i className="fas fa-sun text-yellow-400"></i> {i18next.t('reservation-morning-short')}
                                                     </td>
-                                                    <td className="p-4 text-center font-normal text-sm flex flex-row items-center gap-4 justify-between">
+                                                    <td className="p-4 text-center font-normal text-sm flex flex-col sm:flex-row items-center gap-4">
                                                         <div>
                                                             {
                                                                 reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.morning.length
                                                             }/{eval(`available${key}`)}
                                                         </div>
 
-                                                        <div>
+                                                        <div className="w-full ml-4">
                                                             {Object.keys(item[key]?.morning || {}).sort().map(personKey => (
-                                                                <div className="text-left py-2 border-yellow-600 border-t pl-2 border-l mb-2 flex gap-2 flex-nowrap w-96 flex-row justify-between hover:translate-x-1 hover:shadow-lg transition" key={personKey}>
+                                                                <div className="text-left py-2 border-yellow-600 border-t pl-2 border-l mb-2 flex gap-2 flex-wrap sm:flex-nowrap max-w-96 flex-col sm:flex-row justify-between hover:translate-x-1 hover:shadow-lg transition" key={personKey}>
                                                                     <div className="flex flex-wrap flex-col sm:flex-row gap-4">
-                                                                        <div className="flex flex-col sm:flex-row gap-4">
+                                                                        <div className="flex flex-row gap-4 justify-between">
                                                                             <p className="text-sm font-bold text-orange-600" >{item[key]?.morning?.[personKey]?.fullname}</p>
-                                                                            <p className="text-sm font-normal px-2 bg-orange-600 text-white rounded-full" >{item[key]?.morning?.[personKey]?.guests} <i className="fa-solid fa-user-group text-orange-200"></i></p>
+                                                                            <p className="text-sm font-normal px-2 py-1 bg-orange-600 text-white rounded-full flex gap-3 items-center" >{item[key]?.morning?.[personKey]?.guests} <i className="fa-solid fa-user-group text-orange-200"></i></p>
                                                                         </div>
-                                                                        <div className="flex flex-row gap-4">
-                                                                            <a className="text-sm font-normal hover:text-orange-400" target="_blank" href={'mailto:' + item[key]?.morning?.[personKey]?.email}><i className="fa-solid fa-envelope text-orange-600"></i> {item[key]?.morning?.[personKey]?.email}</a>
-                                                                            <a className="text-sm font-normal text-orange-800 hover:text-orange-400" href={'tel:' + item[key]?.morning?.[personKey]?.phone}><i className="fa-solid fa-mobile text-orange-600"></i> {item[key]?.morning?.[personKey]?.phone}</a>
+                                                                        <div className="flex flex-col gap-4 sm:flex-row">
+                                                                            <a className="text-sm font-normal hover:text-orange-400 flex gap-1 flex-nowrap" target="_blank" href={'mailto:' + item[key]?.morning?.[personKey]?.email}><i className="fa-solid fa-envelope text-orange-600"></i> {item[key]?.morning?.[personKey]?.email}</a>
+                                                                            <a className="text-sm font-normal text-orange-800 hover:text-orange-400 flex gap-1 flex-nowrap" href={'tel:' + item[key]?.morning?.[personKey]?.phone}><i className="fa-solid fa-mobile text-orange-600"></i> {item[key]?.morning?.[personKey]?.phone}</a>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="">
+                                                                    <div className="text-right">
                                                                         <button onClick={handleDeleteButtonClick(key, 'morning', personKey)}><i className="text-xl text-red-300 hover:text-red-500 fa-solid fa-calendar-xmark px-1"></i></button>
                                                                     </div>
                                                                 </div>
@@ -204,27 +204,27 @@ export const ReservationList = () => {
                                                     <td className="p-4">
                                                         <i className="fas fa-cloud-sun text-yellow-800"></i> {i18next.t('reservation-afternoon-short')}
                                                     </td>
-                                                    <td className="p-4 text-center font-normal text-sm flex flex-row items-center gap-4 justify-between">
-                                                        <div>
+                                                    <td className="p-4 text-center font-normal text-sm flex flex-col sm:flex-row items-center gap-4">
+                                                        <div className="">
                                                             {
                                                                 reservationData.find(item => item.date === getCurrentDateString(currentDate))?.[key]?.afternoon.length
                                                                 // console.log(eval(`available${key}`))
                                                             }/{eval(`available${key}`)}
                                                         </div>
-                                                        <div>
+                                                        <div className="w-full ml-4">
                                                             {Object.keys(item[key]?.afternoon || {}).sort().map(personKey => (
-                                                                <div className="text-left py-2 border-yellow-600 border-t pl-2 border-l mb-2 flex gap-2 flex-nowrap w-96 flex-row justify-between hover:translate-x-1 hover:shadow-lg transition" key={personKey}>
+                                                                <div className="text-left py-2 border-yellow-600 border-t pl-2 border-l mb-2 flex gap-2 flex-wrap sm:flex-nowrap max-w-96 flex-col sm:flex-row justify-between hover:translate-x-1 hover:shadow-lg transition" key={personKey}>
                                                                     <div className="flex flex-wrap flex-col sm:flex-row gap-4">
-                                                                        <div className="flex flex-col sm:flex-row gap-4">
+                                                                        <div className="flex flex-row gap-4 justify-between">
                                                                             <p className="text-sm font-bold text-yellow-600" >{item[key]?.afternoon?.[personKey]?.fullname}</p>
-                                                                            <p className="text-sm font-normal px-2 bg-yellow-600 text-white rounded-full" >{item[key]?.afternoon?.[personKey]?.guests} <i className="fa-solid fa-user-group text-orange-200"></i></p>
+                                                                            <p className="text-sm font-normal px-2 py-1 bg-yellow-600 text-white rounded-full flex gap-3 items-center" >{item[key]?.afternoon?.[personKey]?.guests} <i className="fa-solid fa-user-group text-orange-200"></i></p>
                                                                         </div>
                                                                         <div className="flex flex-col gap-4 sm:flex-row">
-                                                                            <a className="text-sm font-normal hover:text-yellow-600" target="_blank" href={'mailto:' + item[key]?.afternoon?.[personKey]?.email}><i className="fa-solid fa-envelope text-yellow-600"></i> {item[key]?.afternoon?.[personKey]?.email}</a>
-                                                                            <a className="text-sm font-normal text-orange-800 hover:text-yellow-600" href={'tel:' + item[key]?.afternoon?.[personKey]?.phone}><i className="fa-solid fa-mobile text-yellow-600"></i> {item[key]?.afternoon?.[personKey]?.phone}</a>
+                                                                            <a className="text-sm font-normal hover:text-yellow-600 flex gap-1 flex-nowrap" target="_blank" href={'mailto:' + item[key]?.afternoon?.[personKey]?.email}><i className="fa-solid fa-envelope text-yellow-600"></i> {item[key]?.afternoon?.[personKey]?.email}</a>
+                                                                            <a className="text-sm font-normal text-orange-800 hover:text-yellow-600 flex gap-1 flex-nowrap" href={'tel:' + item[key]?.afternoon?.[personKey]?.phone}><i className="fa-solid fa-mobile text-yellow-600"></i> {item[key]?.afternoon?.[personKey]?.phone}</a>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="">
+                                                                    <div className="text-right">
                                                                         <button onClick={handleDeleteButtonClick(key, 'afternoon', personKey)}><i className="text-xl text-red-300 hover:text-red-500 fa-solid fa-calendar-xmark px-1"></i></button>
                                                                     </div>
                                                                 </div>
