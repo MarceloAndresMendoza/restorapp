@@ -39,19 +39,19 @@ To get the project up and running on your local machine, follow these steps:
     git clone https://github.com/MarceloAndresMendoza/restorapp.git
     ```
 
-2. **Navigate to Project Directory:** Move into the project directory using the following command:
+2. **Navigate to Project Directory:** Move into the project directory:
 
     ```bash
     cd restorapp
     ```
 
-3. **Install Dependencies:** Install the required dependencies by running the following command:
+3. **Install Dependencies:** Install the required dependencies:
 
     ```bash
     npm install
     ```
 
-4. **Run the Development Server:** Start the development server using the following command:
+4. **Run the Development Server:** Start the development server:
 
     ```bash
     npm run dev
@@ -65,7 +65,7 @@ To get the project up and running on your local machine, follow these steps:
     npm run build
     ```
 
-6. **Deployment:** If you wish to deploy the project to GitHub Pages, you can use the following command:
+6. **Deployment:** If you wish to deploy the project to GitHub Pages, use the next command:
 
     ```bash
     npm run deploy
@@ -74,6 +74,8 @@ To get the project up and running on your local machine, follow these steps:
     This will create a `dist` directory with the compiled project files ready for deployment. You can find more information about GitHub Pages deployment in the [gh-pages documentation](https://www.npmjs.com/package/gh-pages).
 
 7. **Explore and Enjoy:** Congratulations! You now have the **restorapp** project up and running on your local machine. Explore the different features and functionalities of the restaurant website and booking system.
+
+Note: If deploying to a different website, with no subdomain, make sure react router is pointint to the root folder on the navbar component and src/website/routes/AppRoutes.jsx. Also make sure the 'homepage' value is set correctly on package.json.
 
 Remember that the project's live version is available [here](https://marceloandresmendoza.github.io/restorapp/).
 
