@@ -176,7 +176,8 @@ export const ReservationList = () => {
                         >
                             <i className="fas fa-chevron-left"><noscript>&#9664;</noscript></i>
                         </button>
-                        <div className="font-bold">{currentDate.toLocaleDateString()}</div>
+                        <div className="font-bold">{getDayOfWeekString(currentDate.getDay())}{' '}<span className="text-purple-500">{currentDate.toLocaleDateString()}</span></div>
+                        
                         <button
                             className="text-purple-500 hover:text-purple-700 focus:outline-none p-4 shadow-md sm:shadow-none rounded-md"
                             onClick={() => handleDateChange(1)}
