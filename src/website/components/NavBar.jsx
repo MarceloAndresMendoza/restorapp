@@ -23,7 +23,7 @@ export const NavBar = () => {
       <div className="flex justify-between">
         <ul className="flex items-center sm:justify-normal justify-between gap-4 sm:gap-2 ml-2">
           <li>
-            <NavLink to="/restorapp" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
+            <NavLink to="/restorapp/" className="flex flex-col sm:flex-row gap-2 items-center p-5 hover:bg-accent hover:text-white">
               <i className="fa-solid fa-house"></i>
               <div className='hidden sm:block'>{i18next.t('navbar-link-index')}</div>
             </NavLink>
